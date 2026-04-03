@@ -3,6 +3,7 @@ import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SectionCard from '../components/SectionCard';
 import { HOME_CONTENT, SECTIONS } from '../constants/content';
+import { QUESTIONNAIRE } from '../constants/questions';
 
 const SECTION_ROUTES = [
   { key: 'catalysts', route: '/catalysts' },
@@ -24,6 +25,11 @@ export default function HomeScreen() {
         </View>
         <View style={styles.cards}>
           <Text style={styles.menuLabel}>{HOME_CONTENT.menuLabel}</Text>
+          <SectionCard
+            title={QUESTIONNAIRE.title}
+            subtitle={QUESTIONNAIRE.subtitle}
+            route="/questionnaire"
+          />
           {SECTION_ROUTES.map(({ key, route }) => (
             <SectionCard
               key={key}

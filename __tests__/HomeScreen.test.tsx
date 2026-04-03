@@ -23,19 +23,25 @@ describe('HomeScreen', () => {
     expect(getByText(HOME_CONTENT.intro)).toBeTruthy();
   });
 
-  it('renders exactly four section cards', () => {
+  it('renders exactly five cards (questionnaire + four sections)', () => {
     const { getAllByRole } = render(<HomeScreen />);
     const cards = getAllByRole('button');
-    expect(cards).toHaveLength(4);
+    expect(cards).toHaveLength(5);
   });
 
-  it('renders cards for all four sections in order', () => {
+  it('renders the questionnaire card first', () => {
+    const { getAllByRole } = render(<HomeScreen />);
+    const cards = getAllByRole('button');
+    expect(cards[0].props.accessibilityLabel).toContain('Self-Assessment');
+  });
+
+  it('renders section cards after the questionnaire card in order', () => {
     const { getAllByRole } = render(<HomeScreen />);
     const cards = getAllByRole('button');
     const labels = cards.map((c) => c.props.accessibilityLabel as string);
-    expect(labels[0]).toContain('Catalysts');
-    expect(labels[1]).toContain('Nourishers');
-    expect(labels[2]).toContain('Inhibitors');
-    expect(labels[3]).toContain('Toxins');
+    expect(labels[1]).toContain('Catalysts');
+    expect(labels[2]).toContain('Nourishers');
+    expect(labels[3]).toContain('Inhibitors');
+    expect(labels[4]).toContain('Toxins');
   });
 });
