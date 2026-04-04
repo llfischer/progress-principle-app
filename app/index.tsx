@@ -1,16 +1,11 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SectionCard from '../components/SectionCard';
-import { HOME_CONTENT, SECTIONS } from '../constants/content';
+import { HOME_CONTENT } from '../constants/content';
 import { QUESTIONNAIRE } from '../constants/questions';
 
-const SECTION_ROUTES = [
-  { key: 'catalysts', route: '/catalysts' },
-  { key: 'nourishers', route: '/nourishers' },
-  { key: 'inhibitors', route: '/inhibitors' },
-  { key: 'toxins', route: '/toxins' },
-] as const;
+const AGILE_WINGS_URL = 'https://agilewings.se/en/about-agile-wings';
 
 export default function HomeScreen() {
   return (
@@ -30,15 +25,20 @@ export default function HomeScreen() {
             subtitle={QUESTIONNAIRE.subtitle}
             route="/questionnaire-select"
           />
-          {SECTION_ROUTES.map(({ key, route }) => (
-            <SectionCard
-              key={key}
-              title={SECTIONS[key].title}
-              subtitle={SECTIONS[key].tagline}
-              route={route}
-            />
-          ))}
+          <SectionCard
+            title="About Progress Principle"
+            subtitle="Catalysts, Nourishers, Inhibitors & Toxins"
+            route="/about-progress-principle"
+          />
         </View>
+        <TouchableOpacity
+          style={styles.agileWingsLink}
+          onPress={() => Linking.openURL(AGILE_WINGS_URL)}
+          accessibilityRole="link"
+          accessibilityLabel="About Agile Wings"
+        >
+          <Text style={styles.agileWingsText}>About Agile Wings</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   cards: {
     paddingHorizontal: 16,
-    paddingBottom: 24,
+    paddingBottom: 8,
   },
   menuLabel: {
     fontSize: 13,
@@ -91,5 +91,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
     marginBottom: 12,
+  },
+  agileWingsLink: {
+    alignItems: 'center',
+    paddingVertical: 24,
+  },
+  agileWingsText: {
+    fontSize: 14,
+    color: '#6b7280',
+    textDecorationLine: 'underline',
   },
 });
