@@ -28,7 +28,7 @@ export default function HomeScreen() {
           <SectionCard
             title={QUESTIONNAIRE.title}
             subtitle={QUESTIONNAIRE.subtitle}
-            route="/questionnaire"
+            route="/questionnaire-select"
           />
           {SECTION_ROUTES.map(({ key, route }) => (
             <SectionCard

@@ -16,6 +16,7 @@ export default function RootLayout() {
         <Stack.Screen name="nourishers" options={{ title: 'Nourishers' }} />
         <Stack.Screen name="inhibitors" options={{ title: 'Inhibitors' }} />
         <Stack.Screen name="toxins" options={{ title: 'Toxins' }} />
+        <Stack.Screen name="questionnaire-select" options={{ title: 'Self-Assessment' }} />
         <Stack.Screen name="questionnaire" options={{ title: 'Self-Assessment' }} />
         <Stack.Screen name="result" options={{ title: 'Your Result', headerBackVisible: false }} />
       </Stack>
